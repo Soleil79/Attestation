@@ -1,5 +1,6 @@
 import csv
 from datetime import datetime as dt
+from dateutil.parser import parse
 
 csv_bd = []
 id_count = 0
@@ -41,14 +42,9 @@ def search_data(word):
 def search_datetime(date):
     global csv_bd
     count = 0
-    # datetime.strptime(line.strip(), '%d.%m.%Y')
-#     date_string = '21 September. 1999'
-    # date_object = datetime.strptime(date_string, '%d %B. %Y')
-    # print(date_object, type(date_object))
     for row in csv_bd:
-        for item['date'] in row:
-            item_convert =  dt.strptime(item['date'].strip(), "%d-%m-%Y %H:%M:%S")
-            if date in item_convert:   
+        for item in row.values():
+            if date in item:
                 print("; ".join(row.values()))
                 count += 1            
     if count <= 0:
